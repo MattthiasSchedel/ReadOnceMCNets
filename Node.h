@@ -7,6 +7,8 @@
 
 #pragma once
 #include <vector>
+#include <string>
+
 class Agent;
 
 using namespace std;
@@ -20,6 +22,8 @@ public:
 
     virtual vector<Agent*> GetAgentDesc() = 0;
     virtual bool ContainsAgent(Agent* agent, bool ignore_negated = false) = 0;
+
+    string description_string;
 };
 
 #endif //READONCE_MCNETS_NODE_H

@@ -6,7 +6,7 @@
 
 Operator::Operator(string data)
 {
-    this->operand = data;
+    this->description_string = data;
 }
 
 Operator::~Operator()
@@ -16,8 +16,8 @@ Operator::~Operator()
 vector<Agent*> Operator::GetAgentDesc()
 {
     vector<Agent*> left_child_agents = left->GetAgentDesc();
-    child_agents.insert(child_agents.end(), left_child_agents.begin(), left_child_agents.end());
-    child_agents.insert(child_agents.end(), left_child_agents.begin(), left_child_agents.end());
+    child_agents.insert(child_agents.end(), left_child_agents.begin(), left_child_agents.end());/*
+    child_agents.insert(child_agents.end(), left_child_agents.begin(), left_child_agents.end());*/
 
     vector<Agent*> right_child_agents = right->GetAgentDesc();
     child_agents.insert(child_agents.end(), right_child_agents.begin(), right_child_agents.end());
@@ -29,7 +29,7 @@ bool Operator::ContainsAgent(Agent* agent, bool ignore_negated)
 {
     for (auto a : this->child_agents)
     {
-        if (a->literal == agent->literal)
+        if (a->description_string == agent->description_string)
         {
             if (ignore_negated)
             {

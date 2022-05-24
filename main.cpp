@@ -3,6 +3,7 @@
 #include "Operator.h"
 #include "Rule.h"
 #include "MCNet.h"
+#include "ExpressionTree.h"
 
 #include "iostream"
 
@@ -10,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    Agent * agent_x1 = new Agent("x1", false);
+    /*Agent * agent_x1 = new Agent("x1", false);
     Agent * agent_x2 = new Agent("x2", false);
     Agent * agent_x3 = new Agent("x3", false);
     Agent * agent_nx1 = new Agent("x1", true);
@@ -106,7 +107,29 @@ int main()
             new Rule(x1_and_x2_and_x3, 36)
     };
 
+    MCNet * net = new MCNet(agents, rules);*/
+
+    ExpressionTree* expressionTreeGenerator = new ExpressionTree();
+
+    vector<Rule*> rules = {
+            new Rule(expressionTreeGenerator->expression_tree_from_string("x1|!x2&!x3"), 12),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("!x1&x2&!x3"), 6),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("!x1&!x2&x3"), 9),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("x1&x2&!x3"), 24),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("x1&!x2&x3"), 27),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("!x1&x2&x3"), 15),
+            new Rule(expressionTreeGenerator->expression_tree_from_string("x1&x2&x3"), 36)
+    };
+
+    Agent * agent_x1 = new Agent("x1", false);
+    Agent * agent_x2 = new Agent("x2", false);
+    Agent * agent_x3 = new Agent("x3", false);
+    Agent * agent_x4= new Agent("x4", false);
+
+    vector<Agent*> agents = {agent_x1, agent_x2, agent_x3};
+
     MCNet * net = new MCNet(agents, rules);
+
     vector<float> values = net->shapley();
     for (float value : values)
     {

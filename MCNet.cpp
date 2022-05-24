@@ -89,10 +89,10 @@ ABTF MCNet::Sh(Node *rule)
     Agent* agent = dynamic_cast<Agent*>(rule);
     if (agent != nullptr)
     {
-        /*cout << endl << agent->literal;*/
+        /*cout << endl << agent->description_string;*/
         // Find index of agent in list of agents
         auto it = find_if(this->agents.begin(), this->agents.end(),[&agent](const Agent * f) -> bool
-        {return f->literal == agent->literal;});
+        {return f->description_string == agent->description_string;});
         int j = 0;
         if (it == this->agents.end())
         {
@@ -120,8 +120,7 @@ ABTF MCNet::Sh(Node *rule)
     Operator* op = dynamic_cast<Operator*>(rule);
     if (op != nullptr)
     {
-/*        cout << endl << op->operand;*/
-        if (op->operand == "or")
+        if (op->description_string == "|")
         {
             ABTF abtf_1 = this->Sh(op->left);
             ABTF abtf_2 = this->Sh(op->right);
@@ -142,15 +141,15 @@ ABTF MCNet::Sh(Node *rule)
                 }
                 F[k] = f_sum;
 
-                for (int i = 0; i <= n; i++)
+                for (int i = 0; i < n; i++)
                 {
                     // If the Agent at position i in agents list is not contained in this rule
-                    if (!rule->ContainsAgent(this->agents[i]))
+                    if (!rule->ContainsAgent(this->agents[i], true))
                     {
                         A[k][i] = 0;
                         B[k][i] = 0;
                     }
-                    if (op->left->ContainsAgent(this->agents[i]))
+                    if (op->left->ContainsAgent(this->agents[i], true))
                     {
                         int a_sum = 0;
                         for (int s = 0; s <= k; s++)
@@ -166,7 +165,7 @@ ABTF MCNet::Sh(Node *rule)
                         }
                         B[k][i] = b_sum;
                     }
-                    if (op->right->ContainsAgent(this->agents[i]))
+                    if (op->right->ContainsAgent(this->agents[i], true))
                     {
                         int a_sum = 0;
                         for (int s = 0; s <= k; s++)
@@ -186,7 +185,7 @@ ABTF MCNet::Sh(Node *rule)
             }
         }
 
-        if (op->operand == "and")
+        if (op->description_string == "&")
         {
             ABTF abtf_1 = this->Sh(op->left);
             ABTF abtf_2 = this->Sh(op->right);
@@ -259,7 +258,7 @@ ABTF MCNet::Sh(Node *rule)
             print1DVector(F);*/
         }
 
-        if (op->operand == "xor")
+        if (op->description_string == "^")
         {
             ABTF abtf_1 = this->Sh(op->left);
             ABTF abtf_2 = this->Sh(op->right);
@@ -280,17 +279,17 @@ ABTF MCNet::Sh(Node *rule)
                 }
                 F[k] = f_sum;
 
-                for (int i = 0; i <= n; i++)
+                for (int i = 0; i < n; i++)
                 {
                     // If the Agent at position i in agents list is not contained in this rule
-                    if (!rule->ContainsAgent(this->agents[i]))
+                    if (!rule->ContainsAgent(this->agents[i], true))
                     {
                         A[k][i] = 0;
                         B[k][i] = 0;
                     }
-                    if (op->left->ContainsAgent(this->agents[i]))
+                    if (op->left->ContainsAgent(this->agents[i], true))
                     {
-                        int a_sum = 0;
+                        float a_sum = 0;
                         for (int s = 0; s <= k; s++)
                         {
                             a_sum += ((abtf_1.B[s][i] * abtf_2.T[k - s]) + (abtf_1.A[s][i] * abtf_2.F[k-s]));
@@ -304,7 +303,7 @@ ABTF MCNet::Sh(Node *rule)
                         }
                         B[k][i] = b_sum;
                     }
-                    if (op->right->ContainsAgent(this->agents[i]))
+                    if (op->right->ContainsAgent(this->agents[i], true))
                     {
                         int a_sum = 0;
                         for (int s = 0; s <= k; s++)

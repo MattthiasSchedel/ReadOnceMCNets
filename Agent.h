@@ -16,17 +16,16 @@ class Agent : public Node
 private:
     vector<Agent*> agent;
 public:
-    Agent(string literal, bool negated);
+    Agent(string literal, bool negated = false);
     ~Agent();
     vector<Agent*> GetAgentDesc();
     bool ContainsAgent(Agent* agent, bool ignore_negated = false);
 
-    string literal;
     bool negated;
 
     friend bool operator ==(const Agent& a1, const Agent& a2)
     {
-        if (a1.literal == a2.literal)
+        if (a1.description_string == a2.description_string)
         {
             return true;
         }

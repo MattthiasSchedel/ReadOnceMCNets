@@ -10,6 +10,8 @@
 #include <vector>
 #include "Agent.h"
 #include "Node.h"
+#include <map>
+#include <string>
 
 class Operator : public Node
 {
@@ -23,11 +25,8 @@ public:
     vector<Agent*> GetAgentDesc();
     bool ContainsAgent(Agent* agent, bool ignore_negated = false);
 
-    string operand;
     Node* left;
     Node* right;
-
-
 };
 
 

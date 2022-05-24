@@ -85,6 +85,18 @@ build CMakeFiles/ReadOnce_MCNets.dir/MCNet.cpp.o: CXX_COMPILER__ReadOnce_MCNets_
   OBJECT_DIR = CMakeFiles/ReadOnce_MCNets.dir
   OBJECT_FILE_DIR = CMakeFiles/ReadOnce_MCNets.dir
 
+build CMakeFiles/ReadOnce_MCNets.dir/Token.cpp.o: CXX_COMPILER__ReadOnce_MCNets_Debug /Users/matthiasschedel/Documents/CLionProjects/ReadOnce_MCNets/Token.cpp || cmake_object_order_depends_target_ReadOnce_MCNets
+  DEP_FILE = CMakeFiles/ReadOnce_MCNets.dir/Token.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/ReadOnce_MCNets.dir
+  OBJECT_FILE_DIR = CMakeFiles/ReadOnce_MCNets.dir
+
+build CMakeFiles/ReadOnce_MCNets.dir/ExpressionTree.cpp.o: CXX_COMPILER__ReadOnce_MCNets_Debug /Users/matthiasschedel/Documents/CLionProjects/ReadOnce_MCNets/ExpressionTree.cpp || cmake_object_order_depends_target_ReadOnce_MCNets
+  DEP_FILE = CMakeFiles/ReadOnce_MCNets.dir/ExpressionTree.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/ReadOnce_MCNets.dir
+  OBJECT_FILE_DIR = CMakeFiles/ReadOnce_MCNets.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ReadOnce_MCNets
@@ -93,7 +105,7 @@ build CMakeFiles/ReadOnce_MCNets.dir/MCNet.cpp.o: CXX_COMPILER__ReadOnce_MCNets_
 #############################################
 # Link the executable ReadOnce_MCNets
 
-build ReadOnce_MCNets: CXX_EXECUTABLE_LINKER__ReadOnce_MCNets_Debug CMakeFiles/ReadOnce_MCNets.dir/main.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Node.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Agent.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Operator.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Rule.cpp.o CMakeFiles/ReadOnce_MCNets.dir/MCNet.cpp.o
+build ReadOnce_MCNets: CXX_EXECUTABLE_LINKER__ReadOnce_MCNets_Debug CMakeFiles/ReadOnce_MCNets.dir/main.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Node.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Agent.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Operator.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Rule.cpp.o CMakeFiles/ReadOnce_MCNets.dir/MCNet.cpp.o CMakeFiles/ReadOnce_MCNets.dir/Token.cpp.o CMakeFiles/ReadOnce_MCNets.dir/ExpressionTree.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/ReadOnce_MCNets.dir
   POST_BUILD = :

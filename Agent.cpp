@@ -6,8 +6,16 @@
 
 Agent::Agent(string literal, bool negated)
 {
-    this->literal = literal;
-    this->negated = negated;
+    // Automatically detect negated literal
+    if(literal[0] == '!')
+    {
+        this->negated = true;
+        this->description_string = literal.erase(0, 1);
+    }
+    else {
+        this->description_string = literal;
+        this->negated = negated;
+    }
 }
 
 Agent::~Agent()
@@ -22,7 +30,7 @@ vector<Agent*> Agent::GetAgentDesc()
 
 bool Agent::ContainsAgent(Agent* agent, bool ignore_negated)
 {
-    if (agent->literal == this->literal)
+    if (agent->description_string == this->description_string)
     {
         return true;
     }
